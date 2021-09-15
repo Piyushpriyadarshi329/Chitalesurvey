@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?> 
+
+<network-security-config> 
+
+<domain-config cleartextTrafficPermitted="true"> 
+
+<!-- <domain includeSubdomains="true">13.127.105.219</domain>   -->
+<domain includeSubdomains="true">123.108.50.228</domain>
+<domain includeSubdomains="true">123.108.50.211</domain>
+<domain includeSubdomains="true">localhost</domain>
+<domain includeSubdomains="true">192.168.0.113</domain>
+<domain includeSubdomains="true">192.168.1.42</domain>
+<domain includeSubdomains="true">sutradhar.tech</domain>
+<domain includeSubdomains="true">dr.sutradhar.tech</domain>
+<domain includeSubdomains="true">dev.sutradhar.tech</domain>
+
+<domain includeSubdomains="true">103.151.97.157</domain>
+
+
+
+</domain-config> 
+
+</network-security-config> 
