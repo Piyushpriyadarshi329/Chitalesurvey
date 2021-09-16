@@ -43,6 +43,31 @@ navigation.navigate("Edit")
                </View>
 
             </TouchableOpacity>
+
+            {/* <TouchableOpacity  style={{backgroundColor:'lightgray',marginTop:20,marginHorizontal:100,borderRadius:5}}
+            onPress={()=>{
+navigation.navigate("Testing")
+            }}
+            >
+               <View>
+               <Text style={{fontSize:28,textAlign:'center'}}>
+                    Testing
+                    </Text>
+               </View>
+
+            </TouchableOpacity> */}
+            <TouchableOpacity  style={{backgroundColor:'lightgray',marginTop:20,marginHorizontal:100,borderRadius:5}}
+            onPress={()=>{
+navigation.navigate("Maptest")
+            }}
+            >
+               <View>
+               <Text style={{fontSize:28,textAlign:'center'}}>
+                    Map
+                    </Text>
+               </View>
+
+            </TouchableOpacity>
         </View>
     )
 }

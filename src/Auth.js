@@ -17,6 +17,8 @@ import Utpadakcentre from './Utpadakcentre';
 import Dairy from './Dairy';
 import Gavali from './Gavali';
 import Update  from './Update';
+import Testing from './Testing';
+import Maptest from './Maptest';
 // adb shell screenrecord --output-format=h264 - | ffplay -
 
 
@@ -41,6 +43,8 @@ const Auth = () => {
       <Stack.Screen name="Subgavali" component={Subgavali}options={{headerShown:false}}  />
       <Stack.Screen name="Dairy" component={Dairy}options={{headerShown:false}}  />
       <Stack.Screen name="Gavali" component={Gavali}options={{headerShown:false}}  />
+      <Stack.Screen name="Testing" component={Testing}options={{headerShown:false}}  />
+      <Stack.Screen name="Maptest" component={Maptest}options={{headerShown:false}}  />
       <Stack.Screen name="Utpadakcentre" component={Utpadakcentre}options={{headerShown:false}}  />
       <Stack.Screen name="Pending" component={Pending}options={{title:'Pending'}}  />
       <Stack.Screen name="Edit" component={Edit}options={{title:"Edit"}}  />

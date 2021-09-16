@@ -10,6 +10,7 @@ import {RadioButton} from 'react-native-paper';
 import axios from 'axios';
 import AppConstants from './AppConstants';
 import RNLocation from 'react-native-location';
+import GetLocation from 'react-native-get-location';
 
 
 const Question = ({navigation, route}) => {
@@ -38,8 +39,43 @@ const Question = ({navigation, route}) => {
 
   useEffect(() => {
     getvechile()
-    getlocation();
+    // getlocation();
+    getlocation1()
   },[selected]);
+
+
+  async function getlocation1(){
+
+    alert('updatelocation')
+        // Geolocation.getCurrentPosition().then((resp) => {
+        //     // resp.coords.latitude
+        //     // resp.coords.longitude
+        //     setlocation({
+        //         latitude:resp.coords.latitude,
+        //         longitude:resp.coords.longitude
+    
+        //     })
+            
+        //    }).catch((error) => {
+        //      console.log('Error getting location', error);
+        //    });
+    
+        GetLocation.getCurrentPosition({
+            enableHighAccuracy: true,
+            timeout: 15000,
+        })
+        .then(location => {
+            console.log("location",location);
+            // setgetlocation(location)
+            setlatitude(location.latitude);
+            setlongitude(location.longitude);
+        })
+        .catch(error => {
+            const { code, message } = error;
+            console.warn(code, message);
+        })
+    
+    }
 
 async function getvechile(){
 
@@ -62,61 +98,63 @@ useEffect(()=>{
   return ()=>{unsubscribe()}
   },[]);
 
-  async function getlocation() {
-    alert("update location")
-    RNLocation.configure({
-      distanceFilter: 50.0,
-      // desiredAccuracy:"highAccuracy"
-      desiredAccuracy:{
-        ios:'best',
-        android:'highAccuracy'
-      }
+  // async function getlocation() {
+  //   alert("update location")
+
+
+
+
+  //   RNLocation.configure({
+  //     distanceFilter: 50.0,
+  //     // desiredAccuracy:"highAccuracy"
+  //     desiredAccuracy:{
+  //       ios:'best',
+  //       android:'highAccuracy'
+  //     }
       
-    });
+  //   });
 
    
-    
-    // unsubscribe();
+   
 
+  //   let permission = await RNLocation.checkPermission({
+  //     ios: 'whenInUse', // or 'always'
+  //     android: {
+  //       detail: 'coarse', // or 'fine'
+  //     },
+  //   });
 
-    let permission = await RNLocation.checkPermission({
-      ios: 'whenInUse', // or 'always'
-      android: {
-        detail: 'coarse', // or 'fine'
-      },
-    });
+  //   if (!permission) {
+  //     permission = await RNLocation.requestPermission({
+  //       ios: 'whenInUse',
+  //       android: {
+  //         detail: 'fine',
+  //         rationale: {
+  //           title: 'We need to access your location',
+  //           message: 'We use your location to show where you are on the map',
+  //           buttonPositive: 'OK',
+  //           buttonNegative: 'Cancel',
+  //         },
+  //       },
+  //     });
+  //   }
 
-    if (!permission) {
-      permission = await RNLocation.requestPermission({
-        ios: 'whenInUse',
-        android: {
-          detail: 'fine',
-          rationale: {
-            title: 'We need to access your location',
-            message: 'We use your location to show where you are on the map',
-            buttonPositive: 'OK',
-            buttonNegative: 'Cancel',
-          },
-        },
-      });
-    }
+  //   var location = await RNLocation.getLatestLocation({timeout: 60000});
+  //   console.log('location...............', location);
+  //   // setData(prev => {
+  //   //   (prev.latitude = location.latitude),
+  //   //     (prev.longitude = location.longitude);
 
-    var location = await RNLocation.getLatestLocation({timeout: 60000});
-    console.log('location...............', location);
-    // setData(prev => {
-    //   (prev.latitude = location.latitude),
-    //     (prev.longitude = location.longitude);
-
-    //   return {
-    //     ...prev,
-    //   };
-    // });
-    setlatitude(location.latitude);
-    setlongitude(location.longitude);
+  //   //   return {
+  //   //     ...prev,
+  //   //   };
+  //   // });
+  //   setlatitude(location.latitude);
+  //   setlongitude(location.longitude);
 
 
     
-  }
+  // }
 
 
 
@@ -533,7 +571,7 @@ if(latitude==''){
               borderRadius: 5,
               marginTop: 10,
             }}
-            onPress={getlocation}>
+            onPress={getlocation1}>
             <View style={{flex: 1}}>
               <Text style={{fontSize: 20, textAlign: 'center', padding: 5}}>
                 getlocation
